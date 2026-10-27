@@ -9,4 +9,5 @@ import org.springframework.data.domain.Pageable;
 public interface BookService {
     PageResponse<BookResponse> getBooks(String search, Long categoryId, Pageable pageable);
 
+    BookResponse getById(Long id);
 }
