@@ -1,0 +1,25 @@
+services:
+  database:
+    image: postgres:18.2
+    container_name: bookhub-db
+    restart: unless-stopped
+
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-bookhub}
+      POSTGRES_USER: ${POSTGRES_USER:-bookhub_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Debes configurar POSTGRES_PASSWORD en .env}
+
+    ports:
+      - "5433:5432"
+
+    volumes:
+      - bookhub_data:/var/lib/postgresql
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-bookhub_user} -d ${POSTGRES_DB:-bookhub}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  bookhub_data:
