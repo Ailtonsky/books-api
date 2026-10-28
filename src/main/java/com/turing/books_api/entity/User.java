@@ -41,7 +41,7 @@ public class User {
     private String passwordHash;
 
     @Column(nullable = false)
-    private Boolean enabled = true;
+    private boolean enabled = true;
 
     //para que hibernate le ponga la fecha en automatico
     @CreationTimestamp
