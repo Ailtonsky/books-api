@@ -19,6 +19,7 @@ public class Role {
     private Short id;//short porque la columna tiene smallserial
 
     //Aqui se ponen los enum para que sean datos validos    @Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false, unique = true, length = 20)
     private RoleName name;
 }
